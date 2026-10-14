@@ -4,22 +4,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formula Legends</title>
+    <meta name="theme-color" content="#0b0c10">
+    <meta name="description"
+        content="Formula Legends: carreras, estrategia y rivalidad inspiradas en la emoción de las carreras de slot.">
+    <title>Formula Legends | La velocidad. La rivalidad. La revancha.</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>FORMULA LEGENDS</h1>
-    <h2>La velocidad. La rivalidad. La revancha.</h2>
-    <p>Prepárate para competir y demostrar quién domina la pista.</p>
-    <a href="#modos">Descubre el juego</a>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-    <section id="modos">
-        <h2>Modos de juego</h2>
-        <h3>Modo individual</h3>
-        <p>Compite contra el circuito y el reloj.</p>
-        <h3>Dos jugadores</h3>
-        <p>Reta a un amigo y lucha por la victoria.</p>
-    </section>
+    <header class="hero" id="inicio">
+        <nav class="site-nav" aria-label="Navegación principal">
+            <a class="site-logo" href="#inicio" aria-label="Formula Legends, inicio">FL<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#modos">Modos</a></li>
+                <li><a href="#circuitos">Circuitos</a></li>
+                <li><a href="#leyendas">Pilotos</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero-content">
+            <p class="eyebrow">Dos pilotos. Una pista. Ninguna excusa.</p>
+            <h1>FORMULA <span>LEGENDS</span></h1>
+            <p class="hero-tagline">La velocidad. La rivalidad. La revancha.</p>
+            <p>Vuelve la emoción de los piques de sofá en una experiencia de carreras moderna y de alta velocidad.</p>
+            <a class="btn-juego" href="#modos">Descubre el juego <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="hero-stripe" aria-hidden="true"></div>
+    </header>
+
+    <main id="contenido">
+        <section class="section section-modes" id="modos" aria-labelledby="modos-titulo">
+            <div class="section-heading">
+                <p class="eyebrow">Elige tu desafío</p>
+                <h2 id="modos-titulo">Modos de juego</h2>
+            </div>
+
+            <div class="mode-grid">
+                <article class="mode-card">
+                    <span class="card-number" aria-hidden="true">01</span>
+                    <h3>La historia</h3>
+                    <p>Debuta en la Fórmula 1 con Toro Rosso, supera a Lewis Hamilton y lucha por el Campeonato Mundial.
+                    </p>
+                    <p>Compite contra el reloj y mantén el control cuando la carrera se complique.</p>
+                    <a class="text-link" href="#reglas">Descubre el desafío <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="mode-card">
+                    <span class="card-number" aria-hidden="true">02</span>
+                    <h3>Compite con un amigo</h3>
+                    <p>Enfréntate en pantalla dividida horizontal, desde el mismo dispositivo. Cada piloto tendrá su
+                        propia cámara y una experiencia de carrera independiente.</p>
+                    <a class="text-link" href="#reglas">Prepara la revancha <span aria-hidden="true">→</span></a>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-strategy" id="estrategia" aria-labelledby="estrategia-titulo">
+            <div class="section-heading">
+                <p class="eyebrow">Cada decisión cuenta</p>
+                <h2 id="estrategia-titulo">La carrera también se gana en boxes</h2>
+                <p>Elige tus neumáticos en tiempo real y adapta tu estrategia al agarre, el desgaste y la lluvia.</p>
+            </div>
+
+            <ul class="tyre-list" aria-label="Compuestos disponibles">
+                <li><span class="tyre-dot tyre-soft" aria-hidden="true"></span>Soft</li>
+                <li><span class="tyre-dot tyre-medium" aria-hidden="true"></span>Medium</li>
+                <li><span class="tyre-dot tyre-hard" aria-hidden="true"></span>Hard</li>
+                <li><span class="tyre-dot tyre-intermediate" aria-hidden="true"></span>Intermediates</li>
+                <li><span class="tyre-dot tyre-wet" aria-hidden="true"></span>Softwet</li>
+            </ul>
+        </section>
+
+        <section class="section section-circuits" id="circuitos" aria-labelledby="circuitos-titulo">
+            <div class="section-heading">
+                <p class="eyebrow">Pistas con carácter</p>
+                <h2 id="circuitos-titulo">Circuitos dinámicos</h2>
+            </div>
+
+            <div class="circuit-grid">
+                <article class="circuit-card">
+                    <figure class="circuit-image circuit-image-barcelona" role="img"
+                        aria-label="Espacio reservado para una imagen del Circuit de Barcelona-Catalunya"></figure>
+                    <div class="card-content">
+                        <p class="eyebrow">España</p>
+                        <h3>Barcelona</h3>
+                        <p>Circuit de Barcelona-Catalunya</p>
+                    </div>
+                </article>
+
+                <article class="circuit-card">
+                    <figure class="circuit-image circuit-image-spa" role="img"
+                        aria-label="Espacio reservado para una imagen de Spa-Francorchamps"></figure>
+                    <div class="card-content">
+                        <p class="eyebrow">Bélgica</p>
+                        <h3>Spa-Francorchamps</h3>
+                        <p>Eau Rouge, Les Combes y zonas DRS.</p>
+                    </div>
+                </article>
+
+                <article class="circuit-card">
+                    <figure class="circuit-image circuit-image-sao-paulo" role="img"
+                        aria-label="Espacio reservado para una imagen del circuito de São Paulo"></figure>
+                    <div class="card-content">
+                        <p class="eyebrow">Brasil</p>
+                        <h3>São Paulo</h3>
+                        <p>El desafío de Interlagos.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-legends" id="leyendas" aria-labelledby="leyendas-titulo">
+            <div class="section-heading">
+                <p class="eyebrow">World Champions Collection</p>
+                <h2 id="leyendas-titulo">Compite con las leyendas</h2>
+                <p>Elige entre 10 pilotos y compara sus puntos fuertes: velocidad, pilotaje, control en mojado, gestión
+                    de neumáticos y consistencia.</p>
+            </div>
+
+            <div class="driver-grid">
+                <article class="driver-card">
+                    <figure class="driver-image" role="img"
+                        aria-label="Espacio reservado para la imagen de Fernando Alonso"></figure>
+                    <h3>Fernando Alonso</h3>
+                </article>
+                <article class="driver-card">
+                    <figure class="driver-image" role="img"
+                        aria-label="Espacio reservado para la imagen de Lewis Hamilton"></figure>
+                    <h3>Lewis Hamilton</h3>
+                </article>
+                <article class="driver-card">
+                    <figure class="driver-image" role="img"
+                        aria-label="Espacio reservado para la imagen de Ayrton Senna"></figure>
+                    <h3>Ayrton Senna</h3>
+                </article>
+                <article class="driver-card">
+                    <figure class="driver-image" role="img"
+                        aria-label="Espacio reservado para la imagen de Michael Schumacher"></figure>
+                    <h3>Michael Schumacher</h3>
+                </article>
+            </div>
+            <p class="collection-note">La colección completa contará con 10 pilotos legendarios.</p>
+        </section>
+
+        <section class="race-rules" id="reglas" aria-labelledby="reglas-titulo">
+            <div>
+                <p class="eyebrow">Reglas claras. Pista libre.</p>
+                <h2 id="reglas-titulo">15 vueltas. Una victoria.</h2>
+            </div>
+            <p>La carrera termina al completar 15 vueltas. Cruza la meta en P1 para ganar: quedar en P2 significa la
+                derrota.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Creado por <strong>Julian Pitabome y Pau Salvador</strong>.</p>
+        <a href="#inicio">Volver arriba ↑</a>
+    </footer>
 </body>
 
 </html>
