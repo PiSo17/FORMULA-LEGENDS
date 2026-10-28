@@ -29,7 +29,25 @@
             <h1>FORMULA <span>LEGENDS</span></h1>
             <p class="hero-tagline">La velocidad. La rivalidad. La revancha.</p>
             <p>Vuelve la emoción de los piques de sofá en una experiencia de carreras moderna y de alta velocidad.</p>
-            <a class="btn-juego" href="#modos">Descubre el juego <span aria-hidden="true">→</span></a>
+            <div class="hero-actions">
+                <a class="btn-juego" href="#modos">Descubre el juego <span aria-hidden="true">→</span></a>
+                <button class="arcade-toggle" type="button" aria-expanded="false" aria-controls="arcade-menu">
+                    JUGAR
+                </button>
+            </div>
+            <div class="arcade-menu" id="arcade-menu" aria-label="Menú de selección de jugadores" hidden>
+                <a class="arcade-start" href="#modos">START</a>
+                <div class="arcade-player-options" role="group" aria-label="Selecciona el número de jugadores">
+                    <button class="arcade-player-option is-selected" type="button" data-players="1" aria-pressed="true">
+                        <span class="arcade-cursor" aria-hidden="true">▶</span>
+                        <span>1 PLAYER</span>
+                    </button>
+                    <button class="arcade-player-option" type="button" data-players="2" aria-pressed="false">
+                        <span class="arcade-cursor" aria-hidden="true">▶</span>
+                        <span>2 PLAYERS</span>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <div class="hero-stripe" aria-hidden="true"></div>
@@ -86,8 +104,10 @@
 
             <div class="circuit-grid">
                 <article class="circuit-card">
-                    <figure class="circuit-image circuit-image-barcelona" role="img"
-                        aria-label="Espacio reservado para una imagen del Circuit de Barcelona-Catalunya"></figure>
+                    <figure class="circuit-image circuit-image-barcelona">
+                        <img src="IMG/cataluña.jpg" alt="Circuit de Barcelona-Catalunya" loading="lazy"
+                            decoding="async">
+                    </figure>
                     <div class="card-content">
                         <p class="eyebrow">España</p>
                         <h3>Barcelona</h3>
@@ -96,8 +116,10 @@
                 </article>
 
                 <article class="circuit-card">
-                    <figure class="circuit-image circuit-image-spa" role="img"
-                        aria-label="Espacio reservado para una imagen de Spa-Francorchamps"></figure>
+                    <figure class="circuit-image circuit-image-spa">
+                        <img src="IMG/belgica.jpg" alt="Circuit de Spa-Francorchamps" loading="lazy"
+                            decoding="async">
+                    </figure>
                     <div class="card-content">
                         <p class="eyebrow">Bélgica</p>
                         <h3>Spa-Francorchamps</h3>
@@ -106,8 +128,10 @@
                 </article>
 
                 <article class="circuit-card">
-                    <figure class="circuit-image circuit-image-sao-paulo" role="img"
-                        aria-label="Espacio reservado para una imagen del circuito de São Paulo"></figure>
+                    <figure class="circuit-image circuit-image-sao-paulo">
+                        <img src="IMG/sao%20paulo.jpg" alt="Circuito de São Paulo, Interlagos" loading="lazy"
+                            decoding="async">
+                    </figure>
                     <div class="card-content">
                         <p class="eyebrow">Brasil</p>
                         <h3>São Paulo</h3>
@@ -164,6 +188,42 @@
         <p>Creado por <strong>Julian Pitabome y Pau Salvador</strong>.</p>
         <a href="#inicio">Volver arriba ↑</a>
     </footer>
+    <script>
+        const arcadeToggle = document.querySelector(".arcade-toggle");
+        const arcadeMenu = document.querySelector("#arcade-menu");
+        const arcadeOptions = document.querySelectorAll(".arcade-player-option");
+        const arcadeStart = document.querySelector(".arcade-start");
+
+        function setArcadeMenuOpen(isOpen) {
+            arcadeToggle.setAttribute("aria-expanded", String(isOpen));
+            arcadeMenu.hidden = !isOpen;
+        }
+
+        arcadeToggle.addEventListener("click", () => {
+            setArcadeMenuOpen(arcadeMenu.hidden);
+        });
+
+        arcadeOptions.forEach((option) => {
+            option.addEventListener("click", () => {
+                arcadeOptions.forEach((item) => {
+                    const isSelected = item === option;
+                    item.classList.toggle("is-selected", isSelected);
+                    item.setAttribute("aria-pressed", String(isSelected));
+                });
+            });
+        });
+
+        arcadeStart.addEventListener("click", () => {
+            setArcadeMenuOpen(false);
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && !arcadeMenu.hidden) {
+                setArcadeMenuOpen(false);
+                arcadeToggle.focus();
+            }
+        });
+    </script>
 </body>
 
 </html>
