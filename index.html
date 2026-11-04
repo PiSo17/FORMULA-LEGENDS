@@ -88,11 +88,31 @@
             </div>
 
             <ul class="tyre-list" aria-label="Compuestos disponibles">
-                <li><span class="tyre-dot tyre-soft" aria-hidden="true"></span>Soft</li>
-                <li><span class="tyre-dot tyre-medium" aria-hidden="true"></span>Medium</li>
-                <li><span class="tyre-dot tyre-hard" aria-hidden="true"></span>Hard</li>
-                <li><span class="tyre-dot tyre-intermediate" aria-hidden="true"></span>Intermediates</li>
-                <li><span class="tyre-dot tyre-wet" aria-hidden="true"></span>Softwet</li>
+                <li class="tarjeta-neumatico">
+                    <img class="foto-neumatico" src="IMG/soft.jpg" alt="Neumático Soft rojo" loading="lazy"
+                        decoding="async">
+                    <span>Soft</span>
+                </li>
+                <li class="tarjeta-neumatico">
+                    <img class="foto-neumatico" src="IMG/medium.jpg" alt="Neumático Medium amarillo o naranja"
+                        loading="lazy" decoding="async">
+                    <span>Medium</span>
+                </li>
+                <li class="tarjeta-neumatico">
+                    <img class="foto-neumatico" src="IMG/hard.jpg" alt="Neumático Hard blanco" loading="lazy"
+                        decoding="async">
+                    <span>Hard</span>
+                </li>
+                <li class="tarjeta-neumatico">
+                    <img class="foto-neumatico" src="IMG/intermediates.jpg" alt="Neumático Intermediates verde"
+                        loading="lazy" decoding="async">
+                    <span>Intermediates</span>
+                </li>
+                <li class="tarjeta-neumatico">
+                    <img class="foto-neumatico" src="IMG/softwet.jpg" alt="Neumático Softwet azul" loading="lazy"
+                        decoding="async">
+                    <span>Softwet</span>
+                </li>
             </ul>
         </section>
 
@@ -111,18 +131,27 @@
                     <div class="card-content">
                         <p class="eyebrow">España</p>
                         <h3>Barcelona</h3>
+                        <dl class="circuit-specs">
+                            <div><dt>Longitud</dt><dd>4.657 km</dd></div>
+                            <div><dt>Curvas</dt><dd>14</dd></div>
+                            <div><dt>Récord</dt><dd>1:16.330 <span>Max Verstappen</span></dd></div>
+                        </dl>
                         <p>Circuit de Barcelona-Catalunya</p>
                     </div>
                 </article>
 
                 <article class="circuit-card">
                     <figure class="circuit-image circuit-image-spa">
-                        <img src="IMG/belgica.jpg" alt="Circuit de Spa-Francorchamps" loading="lazy"
-                            decoding="async">
+                        <img src="IMG/belgica.jpg" alt="Circuit de Spa-Francorchamps" loading="lazy" decoding="async">
                     </figure>
                     <div class="card-content">
                         <p class="eyebrow">Bélgica</p>
                         <h3>Spa-Francorchamps</h3>
+                        <dl class="circuit-specs">
+                            <div><dt>Longitud</dt><dd>7.004 km</dd></div>
+                            <div><dt>Curvas</dt><dd>19</dd></div>
+                            <div><dt>Récord</dt><dd>1:46.286 <span>Valtteri Bottas</span></dd></div>
+                        </dl>
                         <p>Eau Rouge, Les Combes y zonas DRS.</p>
                     </div>
                 </article>
@@ -135,6 +164,11 @@
                     <div class="card-content">
                         <p class="eyebrow">Brasil</p>
                         <h3>São Paulo</h3>
+                        <dl class="circuit-specs">
+                            <div><dt>Longitud</dt><dd>4.309 km</dd></div>
+                            <div><dt>Curvas</dt><dd>15</dd></div>
+                            <div><dt>Récord</dt><dd>1:10.540 <span>Valtteri Bottas</span></dd></div>
+                        </dl>
                         <p>El desafío de Interlagos.</p>
                     </div>
                 </article>
@@ -151,24 +185,132 @@
 
             <div class="driver-grid">
                 <article class="driver-card">
-                    <figure class="driver-image" role="img"
-                        aria-label="Espacio reservado para la imagen de Fernando Alonso"></figure>
+                    <figure class="driver-image">
+                        <img class="driver-photo" src="IMG/alonso.jpg" alt="Fernando Alonso" loading="lazy"
+                            decoding="async">
+                    </figure>
                     <h3>Fernando Alonso</h3>
+                    <div class="driver-stats" aria-label="Estadísticas de Fernando Alonso">
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Velocidad</span><span>93%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Velocidad" aria-valuemin="0"
+                                aria-valuemax="100" aria-valuenow="93"><span style="width: 93%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Control en mojado</span><span>94%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Control en mojado"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="94"><span
+                                    style="width: 94%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Gestión de neumáticos</span><span>96%</span></div>
+                            <div class="driver-stat-track" role="progressbar"
+                                aria-label="Gestión de neumáticos" aria-valuemin="0" aria-valuemax="100"
+                                aria-valuenow="96"><span style="width: 96%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Consistencia</span><span>96%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Consistencia"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="96"><span
+                                    style="width: 96%"></span></div>
+                        </div>
+                    </div>
                 </article>
                 <article class="driver-card">
-                    <figure class="driver-image" role="img"
-                        aria-label="Espacio reservado para la imagen de Lewis Hamilton"></figure>
+                    <figure class="driver-image">
+                        <img class="driver-photo" src="IMG/hamilton.jpg" alt="Lewis Hamilton" loading="lazy"
+                            decoding="async">
+                    </figure>
                     <h3>Lewis Hamilton</h3>
+                    <div class="driver-stats" aria-label="Estadísticas de Lewis Hamilton">
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Velocidad</span><span>95%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Velocidad" aria-valuemin="0"
+                                aria-valuemax="100" aria-valuenow="95"><span style="width: 95%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Control en mojado</span><span>93%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Control en mojado"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="93"><span
+                                    style="width: 93%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Gestión de neumáticos</span><span>92%</span></div>
+                            <div class="driver-stat-track" role="progressbar"
+                                aria-label="Gestión de neumáticos" aria-valuemin="0" aria-valuemax="100"
+                                aria-valuenow="92"><span style="width: 92%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Consistencia</span><span>95%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Consistencia"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="95"><span
+                                    style="width: 95%"></span></div>
+                        </div>
+                    </div>
                 </article>
                 <article class="driver-card">
-                    <figure class="driver-image" role="img"
-                        aria-label="Espacio reservado para la imagen de Ayrton Senna"></figure>
+                    <figure class="driver-image">
+                        <img class="driver-photo" src="IMG/senna.jpg" alt="Ayrton Senna" loading="lazy"
+                            decoding="async">
+                    </figure>
                     <h3>Ayrton Senna</h3>
+                    <div class="driver-stats" aria-label="Estadísticas de Ayrton Senna">
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Velocidad</span><span>98%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Velocidad" aria-valuemin="0"
+                                aria-valuemax="100" aria-valuenow="98"><span style="width: 98%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Control en mojado</span><span>99%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Control en mojado"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="99"><span
+                                    style="width: 99%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Gestión de neumáticos</span><span>85%</span></div>
+                            <div class="driver-stat-track" role="progressbar"
+                                aria-label="Gestión de neumáticos" aria-valuemin="0" aria-valuemax="100"
+                                aria-valuenow="85"><span style="width: 85%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Consistencia</span><span>91%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Consistencia"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="91"><span
+                                    style="width: 91%"></span></div>
+                        </div>
+                    </div>
                 </article>
                 <article class="driver-card">
-                    <figure class="driver-image" role="img"
-                        aria-label="Espacio reservado para la imagen de Michael Schumacher"></figure>
+                    <figure class="driver-image">
+                        <img class="driver-photo" src="IMG/schumacher.jpg" alt="Michael Schumacher" loading="lazy"
+                            decoding="async">
+                    </figure>
                     <h3>Michael Schumacher</h3>
+                    <div class="driver-stats" aria-label="Estadísticas de Michael Schumacher">
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Velocidad</span><span>96%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Velocidad" aria-valuemin="0"
+                                aria-valuemax="100" aria-valuenow="96"><span style="width: 96%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Control en mojado</span><span>95%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Control en mojado"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="95"><span
+                                    style="width: 95%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Gestión de neumáticos</span><span>89%</span></div>
+                            <div class="driver-stat-track" role="progressbar"
+                                aria-label="Gestión de neumáticos" aria-valuemin="0" aria-valuemax="100"
+                                aria-valuenow="89"><span style="width: 89%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Consistencia</span><span>94%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Consistencia"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="94"><span
+                                    style="width: 94%"></span></div>
+                        </div>
+                    </div>
                 </article>
             </div>
             <p class="collection-note">La colección completa contará con 10 pilotos legendarios.</p>

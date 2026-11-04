@@ -236,6 +236,7 @@ main {
     padding: clamp(1.5rem, 4vw, 2.5rem);
     overflow: hidden;
     animation: aparicion-tarjeta 0.7s ease-out both;
+    transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
 .mode-card:nth-child(2) {
@@ -250,13 +251,43 @@ main {
     width: 5px;
     background: var(--color-red);
     content: "";
+    transition: width 200ms ease;
+}
+
+.mode-card:hover {
+    box-shadow: 0 12px 24px rgb(225 6 0 / 12%);
+    transform: translateY(-5px);
+}
+
+.mode-card:hover::before {
+    width: 9px;
 }
 
 .card-number {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.3rem 0.55rem;
     color: var(--color-gold);
+    background: rgb(154 118 45 / 8%);
+    border: 1px solid rgb(154 118 45 / 35%);
+    border-radius: 0.25rem;
+    font-family: "Courier New", Courier, monospace;
     font-size: 0.85rem;
-    font-weight: 900;
-    letter-spacing: 0.12em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.card-number::before {
+    content: "MODE_";
+    text-transform: uppercase;
+}
+
+.mode-card:hover .card-number {
+    color: var(--color-red);
+    background: rgb(225 6 0 / 8%);
+    border-color: var(--color-red);
 }
 
 .mode-card h3,
@@ -274,11 +305,21 @@ main {
 
 .text-link {
     display: inline-flex;
+    align-items: center;
     gap: 0.5rem;
     margin-top: 0.5rem;
     color: var(--color-red);
     font-weight: 800;
     text-decoration: none;
+}
+
+.mode-card .text-link span {
+    display: inline-block;
+    transition: transform 180ms ease;
+}
+
+.mode-card:hover .text-link span {
+    transform: translateX(4px);
 }
 
 .text-link:hover,
@@ -294,51 +335,71 @@ main {
 }
 
 .tyre-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 0.8rem;
     margin: 1.5rem 0 0;
     padding: 0;
     list-style: none;
 }
 
-.tyre-list li {
-    display: inline-flex;
+.tarjeta-neumatico {
+    display: flex;
     align-items: center;
+    flex-direction: column;
     gap: 0.55rem;
-    padding: 0.65rem 0.9rem;
+    min-width: 0;
+    padding: 1rem;
     background: var(--color-white);
     border: 1px solid var(--color-line);
-    border-radius: 999px;
+    border-radius: 0.75rem;
     font-size: 0.9rem;
     font-weight: 700;
+    text-align: center;
+    transition: all 0.4s ease;
 }
 
-.tyre-dot {
-    width: 0.75rem;
-    height: 0.75rem;
-    border: 2px solid currentColor;
-    border-radius: 50%;
+.tarjeta-neumatico:hover {
+    transform: translateY(-5px);
 }
 
-.tyre-soft {
-    color: #e50914;
+.tarjeta-neumatico:nth-child(1):hover {
+    border-color: #e10600;
+    box-shadow: 0 0 22px rgb(225 6 0 / 35%);
 }
 
-.tyre-medium {
-    color: #d4a800;
+.tarjeta-neumatico:nth-child(2):hover {
+    border-color: #ffd000;
+    box-shadow: 0 0 22px rgb(255 208 0 / 45%);
 }
 
-.tyre-hard {
-    color: #777;
+.tarjeta-neumatico:nth-child(3):hover {
+    border-color: #fff;
+    box-shadow: 0 0 22px rgb(255 255 255 / 90%), 0 0 6px rgb(32 33 39 / 30%);
 }
 
-.tyre-intermediate {
-    color: #168b55;
+.tarjeta-neumatico:nth-child(4):hover {
+    border-color: #00a650;
+    box-shadow: 0 0 22px rgb(0 166 80 / 35%);
 }
 
-.tyre-wet {
-    color: #2877c7;
+.tarjeta-neumatico:nth-child(5):hover {
+    border-color: #00b2e3;
+    box-shadow: 0 0 22px rgb(0 178 227 / 40%);
+}
+
+.foto-neumatico {
+    display: block;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 0.45rem;
+    transform-origin: center;
+    transition: transform 0.4s ease;
+}
+
+.tarjeta-neumatico:hover .foto-neumatico {
+    transform: rotate(20deg);
 }
 
 .circuit-grid {
@@ -357,6 +418,7 @@ main {
 }
 
 .circuit-image {
+    position: relative;
     display: grid;
     min-height: 190px;
     margin: 0;
@@ -367,11 +429,44 @@ main {
         repeating-linear-gradient(135deg, #ecebe6 0 12px, #e4e2dc 12px 24px);
 }
 
+.circuit-image::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 0.7rem 1rem;
+    color: var(--color-white);
+    background: rgb(32 33 39 / 82%);
+    border: 1px solid rgb(255 255 255 / 75%);
+    border-radius: 0.3rem;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 25%);
+    content: "VER TRAZADO";
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -40%);
+    transition: opacity 400ms ease, transform 400ms ease;
+    white-space: nowrap;
+}
+
 .circuit-image img {
     display: block;
     width: 100%;
     height: 190px;
     object-fit: cover;
+    transition: all 400ms ease;
+}
+
+.circuit-card:hover .circuit-image img {
+    opacity: 0.6;
+    transform: scale(1.04);
+}
+
+.circuit-card:hover .circuit-image::after {
+    opacity: 1;
+    transform: translate(-50%, -50%);
 }
 
 .card-content {
@@ -386,6 +481,39 @@ main {
     margin-top: 0;
 }
 
+.circuit-specs {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0.9rem 0;
+}
+
+.circuit-specs div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.circuit-specs dt,
+.circuit-specs dd {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.circuit-specs dd {
+    text-align: right;
+}
+
+.circuit-specs dd span {
+    margin-left: 0.25rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: none;
+}
+
 .driver-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -397,25 +525,63 @@ main {
 }
 
 .driver-image {
-    display: grid;
-    min-height: 190px;
+    height: 190px;
     margin: 0;
-    place-items: center;
+    overflow: hidden;
     background: linear-gradient(145deg, #f0eee8, #dedbd2);
     border-radius: 0.45rem;
 }
 
-.driver-image::after {
-    color: var(--color-muted);
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    content: "FOTO DEL PILOTO";
+.driver-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .driver-card h3 {
     margin: 0.9rem 0 0.4rem;
     font-size: 1rem;
+}
+
+.driver-stats {
+    display: grid;
+    gap: 0.65rem;
+    margin-top: 0.9rem;
+    text-align: left;
+}
+
+.driver-stat-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+    color: var(--color-ink);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.driver-stat-heading span:last-child {
+    flex-shrink: 0;
+    color: var(--color-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.driver-stat-track {
+    height: 7px;
+    overflow: hidden;
+    background: #d7d8dc;
+    border-radius: 999px;
+}
+
+.driver-stat-track span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #b8050d, #e10600);
+    border-radius: inherit;
 }
 
 .collection-note {
@@ -524,6 +690,10 @@ main {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .tyre-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
     .race-rules {
         align-items: flex-start;
         flex-direction: column;
@@ -555,7 +725,11 @@ main {
     }
 
     .driver-image {
-        min-height: 140px;
+        height: 140px;
+    }
+
+    .foto-neumatico {
+        height: 140px;
     }
 
     .site-footer {
