@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0c10">
+    <meta name="description"
+        content="Formula Legends: carreras, estrategia y rivalidad inspiradas en la emoción de las carreras de slot.">
+    <title>Formula Legends | La velocidad. La rivalidad. La revancha.</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="hero" id="inicio">
+        <nav class="site-nav" aria-label="Navegación principal">
+            <a class="site-logo" href="#inicio" aria-label="Formula Legends, inicio">FL<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#modos">Modos</a></li>
+                <li><a href="#circuitos">Circuitos</a></li>
+                <li><a href="#leyendas">Pilotos</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero-content">
+            <p class="eyebrow">Dos pilotos. Una pista. Ninguna excusa.</p>
+            <h1>FORMULA <span>LEGENDS</span></h1>
+            <p class="hero-tagline">La velocidad. La rivalidad. La revancha.</p>
+            <p>Vuelve la emoción de los piques de sofá en una experiencia de carreras moderna y de alta velocidad.</p>
+            <div class="hero-actions">
+                <a class="btn-juego" href="#modos">Descubre el juego <span aria-hidden="true">→</span></a>
+                <button class="arcade-toggle" type="button" aria-expanded="false" aria-controls="arcade-menu">
+                    JUGAR
+                </button>
+            </div>
+            <div class="arcade-menu" id="arcade-menu" aria-label="Menú de selección de jugadores" hidden>
+                <a class="arcade-start" href="#modos">START</a>
+                <div class="arcade-player-options" role="group" aria-label="Selecciona el número de jugadores">
+                    <button class="arcade-player-option is-selected" type="button" data-players="1" aria-pressed="true">
+                        <span class="arcade-cursor" aria-hidden="true">▶</span>
+                        <span>1 PLAYER</span>
+                    </button>
+                    <button class="arcade-player-option" type="button" data-players="2" aria-pressed="false">
+                        <span class="arcade-cursor" aria-hidden="true">▶</span>
+                        <span>2 PLAYERS</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-stripe" aria-hidden="true"></div>
+    </header>
+
+    <main id="contenido">
+        <section class="section section-modes" id="modos" aria-labelledby="modos-titulo">
+            <div class="section-heading">
+                <p class="eyebrow">Elige tu desafío</p>
+                <h2 id="modos-titulo">Modos de juego</h2>
+            </div>
+
+            <div class="mode-grid">
+                <article class="mode-card">
+                    <span class="card-number" aria-hidden="true">01</span>
+                    <h3>La historia</h3>
+                    <p>Debuta en la Fórmula 1 con Toro Rosso, supera a Lewis Hamilton y lucha por el Campeonato Mundial.
+                    </p>
+                    <p>Compite contra el reloj y mantén el control cuando la carrera se complique.</p>
+                    <a class="text-link" href="#reglas">Descubre el desafío <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="mode-card">
+                    <span class="card-number" aria-hidden="true">02</span>
+                    <h3>Compite con un amigo</h3>
+                    <p>Enfréntate en pantalla dividida horizontal, desde el mismo dispositivo. Cada piloto tendrá su
+                        propia cámara y una experiencia de carrera independiente.</p>
+                    <a class="text-link" href="#reglas">Prepara la revancha <span aria-hidden="true">→</span></a>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-strategy" id="estrategia" aria-labelledby="estrategia-titulo">
+            <div class="section-heading">
+                <p class="eyebrow">Cada decisión cuenta</p>
+                <h2 id="estrategia-titulo">La carrera también se gana en boxes</h2>
+                <p>Elige tus neumáticos en tiempo real y adapta tu estrategia al agarre, el desgaste y la lluvia.</p>
+            </div>
+
+            <ul class="tyre-list" aria-label="Compuestos disponibles">
+                <li class="tarjeta-neumatico">
+                    <img class="foto-neumatico" src="IMG/soft.jpg" alt="Neumático Soft rojo" loading="lazy"
+                        decoding="async">
+                    <span>Soft</span>
+                </li>
+                <li class="tarjeta-neumatico">
+                    <img class="foto-neumatico" src="IMG/medium.jpg" alt="Neumático Medium amarillo o naranja"
+                        loading="lazy" decoding="async">
+                    <span>Medium</span>
+                </li>
+                <li class="tarjeta-neumatico">
+                    <img class="foto-neumatico" src="IMG/hard.jpg" alt="Neumático Hard blanco" loading="lazy"
+                        decoding="async">
+                    <span>Hard</span>
+                </li>
+                <li class="tarjeta-neumatico">
+                    <img class="foto-neumatico" src="IMG/intermediates.jpg" alt="Neumático Intermediates verde"
+                        loading="lazy" decoding="async">
+                    <span>Intermediates</span>
+                </li>
+                <li class="tarjeta-neumatico">
+                    <img class="foto-neumatico" src="IMG/softwet.jpg" alt="Neumático Softwet azul" loading="lazy"
+                        decoding="async">
+                    <span>Softwet</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section section-circuits" id="circuitos" aria-labelledby="circuitos-titulo">
+            <div class="section-heading">
+                <p class="eyebrow">Pistas con carácter</p>
+                <h2 id="circuitos-titulo">Circuitos dinámicos</h2>
+            </div>
+
+            <div class="circuit-grid">
+                <article class="circuit-card">
+                    <figure class="circuit-image circuit-image-barcelona">
+                        <img src="IMG/cataluña.jpg" alt="Circuit de Barcelona-Catalunya" loading="lazy"
+                            decoding="async">
+                    </figure>
+                    <div class="card-content">
+                        <p class="eyebrow">España</p>
+                        <h3>Barcelona</h3>
+                        <dl class="circuit-specs">
+                            <div><dt>Longitud</dt><dd>4.657 km</dd></div>
+                            <div><dt>Curvas</dt><dd>14</dd></div>
+                            <div><dt>Récord</dt><dd>1:16.330 <span>Max Verstappen</span></dd></div>
+                        </dl>
+                        <p>Circuit de Barcelona-Catalunya</p>
+                    </div>
+                </article>
+
+                <article class="circuit-card">
+                    <figure class="circuit-image circuit-image-spa">
+                        <img src="IMG/belgica.jpg" alt="Circuit de Spa-Francorchamps" loading="lazy" decoding="async">
+                    </figure>
+                    <div class="card-content">
+                        <p class="eyebrow">Bélgica</p>
+                        <h3>Spa-Francorchamps</h3>
+                        <dl class="circuit-specs">
+                            <div><dt>Longitud</dt><dd>7.004 km</dd></div>
+                            <div><dt>Curvas</dt><dd>19</dd></div>
+                            <div><dt>Récord</dt><dd>1:46.286 <span>Valtteri Bottas</span></dd></div>
+                        </dl>
+                        <p>Eau Rouge, Les Combes y zonas DRS.</p>
+                    </div>
+                </article>
+
+                <article class="circuit-card">
+                    <figure class="circuit-image circuit-image-sao-paulo">
+                        <img src="IMG/sao%20paulo.jpg" alt="Circuito de São Paulo, Interlagos" loading="lazy"
+                            decoding="async">
+                    </figure>
+                    <div class="card-content">
+                        <p class="eyebrow">Brasil</p>
+                        <h3>São Paulo</h3>
+                        <dl class="circuit-specs">
+                            <div><dt>Longitud</dt><dd>4.309 km</dd></div>
+                            <div><dt>Curvas</dt><dd>15</dd></div>
+                            <div><dt>Récord</dt><dd>1:10.540 <span>Valtteri Bottas</span></dd></div>
+                        </dl>
+                        <p>El desafío de Interlagos.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-legends" id="leyendas" aria-labelledby="leyendas-titulo">
+            <div class="section-heading">
+                <p class="eyebrow">World Champions Collection</p>
+                <h2 id="leyendas-titulo">Compite con las leyendas</h2>
+                <p>Elige entre 10 pilotos y compara sus puntos fuertes: velocidad, pilotaje, control en mojado, gestión
+                    de neumáticos y consistencia.</p>
+            </div>
+
+            <div class="driver-grid">
+                <article class="driver-card">
+                    <figure class="driver-image">
+                        <img class="driver-photo" src="IMG/alonso.jpg" alt="Fernando Alonso" loading="lazy"
+                            decoding="async">
+                    </figure>
+                    <h3>Fernando Alonso</h3>
+                    <div class="driver-stats" aria-label="Estadísticas de Fernando Alonso">
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Velocidad</span><span>93%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Velocidad" aria-valuemin="0"
+                                aria-valuemax="100" aria-valuenow="93"><span style="width: 93%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Control en mojado</span><span>94%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Control en mojado"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="94"><span
+                                    style="width: 94%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Gestión de neumáticos</span><span>96%</span></div>
+                            <div class="driver-stat-track" role="progressbar"
+                                aria-label="Gestión de neumáticos" aria-valuemin="0" aria-valuemax="100"
+                                aria-valuenow="96"><span style="width: 96%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Consistencia</span><span>96%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Consistencia"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="96"><span
+                                    style="width: 96%"></span></div>
+                        </div>
+                    </div>
+                </article>
+                <article class="driver-card">
+                    <figure class="driver-image">
+                        <img class="driver-photo" src="IMG/hamilton.jpg" alt="Lewis Hamilton" loading="lazy"
+                            decoding="async">
+                    </figure>
+                    <h3>Lewis Hamilton</h3>
+                    <div class="driver-stats" aria-label="Estadísticas de Lewis Hamilton">
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Velocidad</span><span>95%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Velocidad" aria-valuemin="0"
+                                aria-valuemax="100" aria-valuenow="95"><span style="width: 95%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Control en mojado</span><span>93%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Control en mojado"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="93"><span
+                                    style="width: 93%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Gestión de neumáticos</span><span>92%</span></div>
+                            <div class="driver-stat-track" role="progressbar"
+                                aria-label="Gestión de neumáticos" aria-valuemin="0" aria-valuemax="100"
+                                aria-valuenow="92"><span style="width: 92%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Consistencia</span><span>95%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Consistencia"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="95"><span
+                                    style="width: 95%"></span></div>
+                        </div>
+                    </div>
+                </article>
+                <article class="driver-card">
+                    <figure class="driver-image">
+                        <img class="driver-photo" src="IMG/senna.jpg" alt="Ayrton Senna" loading="lazy"
+                            decoding="async">
+                    </figure>
+                    <h3>Ayrton Senna</h3>
+                    <div class="driver-stats" aria-label="Estadísticas de Ayrton Senna">
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Velocidad</span><span>98%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Velocidad" aria-valuemin="0"
+                                aria-valuemax="100" aria-valuenow="98"><span style="width: 98%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Control en mojado</span><span>99%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Control en mojado"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="99"><span
+                                    style="width: 99%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Gestión de neumáticos</span><span>85%</span></div>
+                            <div class="driver-stat-track" role="progressbar"
+                                aria-label="Gestión de neumáticos" aria-valuemin="0" aria-valuemax="100"
+                                aria-valuenow="85"><span style="width: 85%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Consistencia</span><span>91%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Consistencia"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="91"><span
+                                    style="width: 91%"></span></div>
+                        </div>
+                    </div>
+                </article>
+                <article class="driver-card">
+                    <figure class="driver-image">
+                        <img class="driver-photo" src="IMG/schumacher.jpg" alt="Michael Schumacher" loading="lazy"
+                            decoding="async">
+                    </figure>
+                    <h3>Michael Schumacher</h3>
+                    <div class="driver-stats" aria-label="Estadísticas de Michael Schumacher">
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Velocidad</span><span>96%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Velocidad" aria-valuemin="0"
+                                aria-valuemax="100" aria-valuenow="96"><span style="width: 96%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Control en mojado</span><span>95%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Control en mojado"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="95"><span
+                                    style="width: 95%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Gestión de neumáticos</span><span>89%</span></div>
+                            <div class="driver-stat-track" role="progressbar"
+                                aria-label="Gestión de neumáticos" aria-valuemin="0" aria-valuemax="100"
+                                aria-valuenow="89"><span style="width: 89%"></span></div>
+                        </div>
+                        <div class="driver-stat">
+                            <div class="driver-stat-heading"><span>Consistencia</span><span>94%</span></div>
+                            <div class="driver-stat-track" role="progressbar" aria-label="Consistencia"
+                                aria-valuemin="0" aria-valuemax="100" aria-valuenow="94"><span
+                                    style="width: 94%"></span></div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <p class="collection-note">La colección completa contará con 10 pilotos legendarios.</p>
+        </section>
+
+        <section class="race-rules" id="reglas" aria-labelledby="reglas-titulo">
+            <div>
+                <p class="eyebrow">Reglas claras. Pista libre.</p>
+                <h2 id="reglas-titulo">15 vueltas. Una victoria.</h2>
+            </div>
+            <p>La carrera termina al completar 15 vueltas. Cruza la meta en P1 para ganar: quedar en P2 significa la
+                derrota.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Creado por <strong>Julian Pitabome y Pau Salvador</strong>.</p>
+        <a href="#inicio">Volver arriba ↑</a>
+    </footer>
+    <script>
+        const arcadeToggle = document.querySelector(".arcade-toggle");
+        const arcadeMenu = document.querySelector("#arcade-menu");
+        const arcadeOptions = document.querySelectorAll(".arcade-player-option");
+        const arcadeStart = document.querySelector(".arcade-start");
+
+        function setArcadeMenuOpen(isOpen) {
+            arcadeToggle.setAttribute("aria-expanded", String(isOpen));
+            arcadeMenu.hidden = !isOpen;
+        }
+
+        arcadeToggle.addEventListener("click", () => {
+            setArcadeMenuOpen(arcadeMenu.hidden);
+        });
+
+        arcadeOptions.forEach((option) => {
+            option.addEventListener("click", () => {
+                arcadeOptions.forEach((item) => {
+                    const isSelected = item === option;
+                    item.classList.toggle("is-selected", isSelected);
+                    item.setAttribute("aria-pressed", String(isSelected));
+                });
+            });
+        });
+
+        arcadeStart.addEventListener("click", () => {
+            setArcadeMenuOpen(false);
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && !arcadeMenu.hidden) {
+                setArcadeMenuOpen(false);
+                arcadeToggle.focus();
+            }
+        });
+    </script>
+</body>
+
+</html>
