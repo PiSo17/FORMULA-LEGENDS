@@ -15,6 +15,9 @@
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
     <header class="hero" id="inicio">
+        <video class="hero-video" autoplay loop muted playsinline aria-hidden="true" tabindex="-1">
+            <source src="IMG/VIDEO/formula%20legends%20video.mp4" type="video/mp4">
+        </video>
         <nav class="site-nav" aria-label="Navegación principal">
             <a class="site-logo" href="#inicio" aria-label="Formula Legends, inicio">FL<span>.</span></a>
             <ul class="nav-links">
@@ -32,7 +35,7 @@
             <div class="hero-actions">
                 <a class="btn-juego" href="#modos">Descubre el juego <span aria-hidden="true">→</span></a>
                 <button class="arcade-toggle" type="button" aria-expanded="false" aria-controls="arcade-menu">
-                    JUGAR
+                    JUGAR AHORA
                 </button>
             </div>
             <div class="arcade-menu" id="arcade-menu" aria-label="Menú de selección de jugadores" hidden>
@@ -317,12 +320,13 @@
         </section>
 
         <section class="race-rules" id="reglas" aria-labelledby="reglas-titulo">
-            <div>
+            <div class="race-rules-copy">
                 <p class="eyebrow">Reglas claras. Pista libre.</p>
                 <h2 id="reglas-titulo">15 vueltas. Una victoria.</h2>
             </div>
-            <p>La carrera termina al completar 15 vueltas. Cruza la meta en P1 para ganar: quedar en P2 significa la
-                derrota.</p>
+            <p class="race-rules-description">La carrera termina al completar 15 vueltas. Cruza la meta en P1 para
+                ganar: quedar en P2 significa la derrota.</p>
+            <div class="framer-perspective-grid" aria-hidden="true"></div>
         </section>
     </main>
 
@@ -365,6 +369,25 @@
                 arcadeToggle.focus();
             }
         });
+
+        const raceRules = document.querySelector(".race-rules");
+        if (raceRules && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+            raceRules.addEventListener("pointermove", (event) => {
+                if (event.pointerType === "touch") return;
+
+                const bounds = raceRules.getBoundingClientRect();
+                const mouseX = ((event.clientX - bounds.left) / bounds.width) * 100;
+                const mouseY = ((event.clientY - bounds.top) / bounds.height) * 100;
+
+                raceRules.style.setProperty("--mouse-x", `${mouseX}%`);
+                raceRules.style.setProperty("--mouse-y", `${mouseY}%`);
+            });
+
+            raceRules.addEventListener("pointerleave", () => {
+                raceRules.style.setProperty("--mouse-x", "50%");
+                raceRules.style.setProperty("--mouse-y", "56%");
+            });
+        }
     </script>
 </body>
 
