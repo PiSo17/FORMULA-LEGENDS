@@ -48,16 +48,39 @@ a {
 
 .hero {
     position: relative;
+    isolation: isolate;
     display: flex;
-    min-height: 640px;
+    min-height: 100vh;
+    min-height: 100svh;
     flex-direction: column;
     overflow: hidden;
+    background: #050507;
+}
+
+.hero-video {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero::before {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
     background:
-        linear-gradient(115deg, rgb(255 255 255 / 98%) 35%, rgb(244 243 239 / 86%) 100%),
-        repeating-linear-gradient(135deg, transparent 0 38px, rgb(32 33 39 / 3%) 39px 40px);
+        linear-gradient(90deg, rgb(5 5 7 / 88%) 0%, rgb(5 5 7 / 68%) 48%, rgb(5 5 7 / 38%) 100%),
+        radial-gradient(ellipse at 68% 48%, transparent 8%, rgb(5 5 7 / 38%) 100%);
+    content: "";
+    pointer-events: none;
 }
 
 .site-nav {
+    position: relative;
+    z-index: 2;
     display: flex;
     width: min(1180px, calc(100% - 3rem));
     align-items: center;
@@ -67,7 +90,7 @@ a {
 }
 
 .site-logo {
-    color: var(--color-ink);
+    color: #fff;
     font-size: 1.8rem;
     font-weight: 900;
     letter-spacing: -0.08em;
@@ -87,7 +110,7 @@ a {
 }
 
 .nav-links a {
-    color: var(--color-ink);
+    color: #fff;
     font-size: 0.9rem;
     font-weight: 700;
     text-decoration: none;
@@ -99,10 +122,16 @@ a {
 }
 
 .hero-content {
+    position: relative;
+    z-index: 2;
     width: min(900px, calc(100% - 3rem));
     margin: auto;
     padding: 5rem 0 7rem;
     animation: arrancar-carrera 0.9s ease-out both;
+}
+
+.hero .eyebrow {
+    color: #ff514b;
 }
 
 .eyebrow {
@@ -137,15 +166,16 @@ h1 span {
 
 .hero-tagline {
     margin: 1rem 0;
-    color: var(--color-gold);
+    color: #fff;
     font-size: clamp(1.2rem, 2.5vw, 1.7rem);
     font-weight: 800;
 }
 
 .hero-content>p:not(.eyebrow, .hero-tagline) {
     max-width: 620px;
-    color: var(--color-muted);
+    color: rgb(255 255 255 / 88%);
     font-size: 1.1rem;
+    text-shadow: 0 2px 12px rgb(0 0 0 / 55%);
 }
 
 .btn-juego {
@@ -175,6 +205,7 @@ h1 span {
 
 .hero-stripe {
     position: absolute;
+    z-index: 2;
     right: -5%;
     bottom: 0;
     left: -5%;
@@ -590,28 +621,87 @@ main {
     font-size: 0.9rem;
 }
 
+@property --mouse-x {
+    syntax: "<percentage>";
+    inherits: true;
+    initial-value: 50%;
+}
+
+@property --mouse-y {
+    syntax: "<percentage>";
+    inherits: true;
+    initial-value: 56%;
+}
+
 .race-rules {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
     margin: 1rem 0 4rem;
     padding: clamp(1.5rem, 4vw, 3rem);
-    background: var(--color-white);
-    border: 1px solid var(--color-line);
-    border-left: 6px solid var(--color-red);
+    overflow: hidden;
+    color: #fff;
+    background: #050507;
+    border: 1px solid rgb(255 255 255 / 12%);
+    border-left: 6px solid #e10600;
     border-radius: 0.75rem;
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 18px 48px rgb(0 0 0 / 22%);
+    --mouse-x: 50%;
+    --mouse-y: 56%;
+    transition: --mouse-x 400ms ease-out, --mouse-y 400ms ease-out;
+}
+
+.race-rules-copy,
+.race-rules-description {
+    position: relative;
+    z-index: 1;
+}
+
+.race-rules .eyebrow {
+    color: #ff514b;
 }
 
 .race-rules h2 {
     margin-bottom: 0;
+    color: #fff;
 }
 
-.race-rules>p {
+.race-rules-description {
     max-width: 430px;
     margin: 0;
-    color: var(--color-muted);
+    color: rgb(255 255 255 / 82%);
+}
+
+.framer-perspective-grid {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.framer-perspective-grid::before {
+    position: absolute;
+    right: -32%;
+    bottom: -132%;
+    left: -32%;
+    height: 245%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Crect x='3' y='3' width='66' height='66' rx='6' fill='%23ffffff' fill-opacity='.025' stroke='%23383a42' stroke-opacity='.75' stroke-width='1'/%3E%3C/svg%3E");
+    background-size: 72px 72px;
+    content: "";
+    mask-image: radial-gradient(ellipse at 50% 48%, #000 18%, transparent 76%);
+    transform: perspective(760px) rotateX(58deg) rotateZ(-8deg);
+    transform-origin: center bottom;
+    -webkit-mask-image: radial-gradient(ellipse at 50% 48%, #000 18%, transparent 76%);
+}
+
+.framer-perspective-grid::after {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at var(--mouse-x, 50%) var(--mouse-y, 56%), rgb(225 6 0 / 35%), transparent 72%);
+    content: "";
 }
 
 .site-footer {
@@ -678,7 +768,8 @@ main {
 
 @media (max-width: 760px) {
     .hero {
-        min-height: 560px;
+        min-height: 100vh;
+        min-height: 100svh;
     }
 
     .mode-grid,
@@ -697,6 +788,13 @@ main {
     .race-rules {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .framer-perspective-grid::before {
+        right: -75%;
+        left: -75%;
+        height: 210%;
+        transform: perspective(650px) rotateX(58deg) rotateZ(-8deg) scale(1.2);
     }
 }
 
