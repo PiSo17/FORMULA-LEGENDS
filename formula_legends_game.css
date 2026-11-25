@@ -1,0 +1,693 @@
+        :root {
+            --color-brand-red: #e10600;
+            --color-brand-dark: #07090e;
+            --font-racing: 'Montserrat', sans-serif;
+            --font-tech: 'Rajdhani', sans-serif;
+            --font-display: 'Orbitron', sans-serif;
+        }
+
+        body {
+            background-color: var(--color-brand-dark);
+            color: #ffffff;
+            font-family: var(--font-racing);
+            overflow: hidden;
+            user-select: none;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Background & Ambient Animations */
+        .parallax-bg {
+            position: absolute;
+            inset: -5%;
+            width: 110%;
+            height: 110%;
+            background: radial-gradient(circle at 50% 25%, #182238 0%, #080a10 55%, #020305 100%);
+            z-index: 0;
+            animation: breathe 16s infinite alternate ease-in-out;
+        }
+
+        #particle-canvas {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .track-lines {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 42vh;
+            background-image: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 80px,
+                rgba(225, 6, 0, 0.08) 80px,
+                rgba(225, 6, 0, 0.08) 83px
+            );
+            transform: perspective(600px) rotateX(72deg);
+            transform-origin: bottom;
+            animation: moveTrack 15s linear infinite;
+            z-index: 1;
+        }
+
+        /* 3D Foreground Monoplazas */
+        .car-container {
+            position: absolute;
+            bottom: 6%;
+            z-index: 2;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        .car-main {
+            left: 50%;
+            transform: translateX(-50%) scale(1.15);
+            bottom: 4%;
+            filter: drop-shadow(0 0 25px rgba(225, 6, 0, 0.5));
+            animation: hoverCar 3.5s infinite alternate ease-in-out;
+        }
+        
+        .car-left {
+            left: 10%;
+            bottom: 12%;
+            transform: scale(0.8);
+            opacity: 0.65;
+            animation: hoverCar 4.2s infinite alternate-reverse ease-in-out;
+            filter: drop-shadow(0 0 15px rgba(0, 150, 255, 0.3));
+        }
+
+        .car-right {
+            right: 10%;
+            bottom: 10%;
+            transform: scale(0.85);
+            opacity: 0.6;
+            animation: hoverCar 3.8s infinite alternate ease-in-out;
+            filter: drop-shadow(0 0 15px rgba(0, 200, 100, 0.3));
+        }
+
+        .headlight-glow {
+            position: absolute;
+            width: 45px;
+            height: 12px;
+            background: #ffffff;
+            box-shadow: 0 0 35px 20px rgba(255, 255, 255, 0.6), 0 0 70px 30px rgba(225, 6, 0, 0.4);
+            border-radius: 50%;
+            top: 58%;
+        }
+        .hl-left { left: 18%; }
+        .hl-right { right: 18%; }
+
+        /* UI Base Layout */
+        .ui-layer {
+            position: relative;
+            z-index: 10;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(90deg, rgba(4,6,10,0.92) 0%, rgba(4,6,10,0.6) 38%, rgba(4,6,10,0.15) 100%);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Typography */
+        .logo-text {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            transform: skewX(-8deg);
+        }
+        .logo-formula { color: #ffffff; text-shadow: 0 0 20px rgba(255,255,255,0.3); }
+        .logo-legends { color: var(--color-brand-red); text-shadow: 0 0 25px rgba(225, 6, 0, 0.8); }
+
+        /* Main Menu Buttons */
+        .menu-item {
+            position: relative;
+            font-family: var(--font-racing);
+            font-size: 2.2rem;
+            font-weight: 900;
+            font-style: italic;
+            text-transform: uppercase;
+            color: #d1d5db;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            padding-left: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 5px;
+            background-color: var(--color-brand-red);
+            transform: scaleY(0);
+            transition: transform 0.2s ease;
+            box-shadow: 0 0 12px var(--color-brand-red);
+        }
+
+        .menu-item:hover, .menu-item:focus {
+            color: #ffffff;
+            transform: translateX(16px) skewX(-6deg);
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+            outline: none;
+        }
+
+        .menu-item:hover::before, .menu-item:focus::before {
+            transform: scaleY(1);
+        }
+
+        /* Cards & Submenus */
+        .f1-card {
+            background: linear-gradient(135deg, rgba(20,25,35,0.88) 0%, rgba(8,10,15,0.95) 100%);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-left: 4px solid var(--color-brand-red);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform: skewX(-3deg);
+        }
+        .f1-card:hover {
+            transform: skewX(-3deg) translateY(-4px);
+            border-left-color: #ffffff;
+            box-shadow: 0 16px 45px rgba(225, 6, 0, 0.35);
+        }
+
+        .btn-primary {
+            background: var(--color-brand-red);
+            color: #ffffff;
+            font-family: var(--font-tech);
+            font-weight: 700;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            padding: 0.7rem 2rem;
+            transform: skewX(-8deg);
+            transition: all 0.25s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 0 15px rgba(225, 6, 0, 0.4);
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background: transparent;
+            border-color: var(--color-brand-red);
+            box-shadow: 0 0 25px var(--color-brand-red);
+            color: #ffffff;
+        }
+        .btn-primary span { display: block; transform: skewX(8deg); }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.08);
+            color: #ffffff;
+            font-family: var(--font-tech);
+            font-weight: 700;
+            padding: 0.65rem 1.8rem;
+            transform: skewX(-8deg);
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.22);
+            border-color: #ffffff;
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
+        .btn-secondary span { display: block; transform: skewX(8deg); }
+
+        /* F1 Collectible Driver Card */
+        .legend-card-container {
+            position: relative;
+            aspect-ratio: 5 / 7;
+            background: linear-gradient(180deg, #121824 0%, #080a0f 100%);
+            border-radius: 8px;
+            border: 2px solid #2a3446;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.9), 0 8px 20px rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .legend-card-container:hover {
+            border-color: #ffffff;
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.8), 0 15px 35px rgba(var(--card-glow), 0.5);
+            z-index: 20;
+        }
+
+        .card-header-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 38px;
+            z-index: 5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .card-number-badge {
+            font-family: var(--font-tech);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #00f0ff;
+            letter-spacing: 0.05em;
+        }
+
+        .card-image-wrapper {
+            position: relative;
+            height: 52%;
+            width: 100%;
+            z-index: 2;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 40%, rgba(var(--card-glow), 0.25) 0%, rgba(0,0,0,0.8) 100%);
+        }
+
+        .card-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.9));
+            transition: transform 0.5s ease;
+        }
+
+        .legend-card-container:hover .card-image-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .card-info-box {
+            position: relative;
+            z-index: 4;
+            height: 48%;
+            background: linear-gradient(180deg, rgba(5,7,12,0.95) 0%, rgba(2,3,5,1) 100%);
+            padding: 6px 10px 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .driver-name-title {
+            font-family: var(--font-racing);
+            font-size: 0.8rem;
+            font-weight: 900;
+            font-style: italic;
+            text-transform: uppercase;
+            color: #ffffff;
+            line-height: 1.1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .driver-sub-info {
+            font-family: var(--font-tech);
+            font-size: 0.65rem;
+            color: #9ca3af;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 1px;
+        }
+
+        .ovr-badge-box {
+            text-align: right;
+            line-height: 1;
+        }
+        .ovr-label {
+            font-family: var(--font-tech);
+            font-size: 0.55rem;
+            color: #9ca3af;
+            font-weight: 700;
+        }
+        .ovr-val {
+            font-family: var(--font-racing);
+            font-style: italic;
+            font-weight: 900;
+            font-size: 1.25rem;
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(255,255,255,0.6);
+        }
+
+        .stat-bar-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5px;
+            margin-top: 2px;
+        }
+        .mini-stat-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--font-tech);
+            font-size: 0.58rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .mini-stat-label { color: #8a94a6; text-transform: uppercase; letter-spacing: 0.03em; }
+        .mini-stat-track {
+            flex: 1;
+            height: 3px;
+            background: #18202c;
+            margin: 0 6px;
+            border-radius: 1px;
+            overflow: hidden;
+        }
+        .mini-stat-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e10600, #ff5500);
+            box-shadow: 0 0 6px rgba(225,6,0,0.8);
+        }
+        .mini-stat-val { color: #ffffff; min-width: 16px; text-align: right; }
+
+        /* Screens */
+        .screen { display: none; }
+        .screen.active { display: flex; animation: fadeInUp 0.4s both cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(18px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes breathe {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.04); }
+        }
+        
+        @keyframes moveTrack {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 800px; }
+        }
+
+        @keyframes hoverCar {
+            0% { transform: translateY(0) translateX(-50%) scale(1.15); }
+            100% { transform: translateY(10px) translateX(-50%) scale(1.15); }
+        }
+
+        /* SCALEXTRIC GAME CANVAS STYLING */
+        #game-canvas-container {
+            position: absolute;
+            inset: 0;
+            z-index: 30;
+            background: #06090e;
+            display: none;
+            flex-direction: column;
+        }
+        #game-canvas-container.active {
+            display: flex;
+        }
+
+        .race-threejs-wrapper {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .race-threejs-wrapper canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        #race-threejs-loader[hidden] {
+            display: none;
+        }
+
+        #scalextric-canvas {
+            display: none;
+        }
+        #game-canvas-container.legacy-2d #scalextric-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        #game-canvas-container.legacy-2d .race-threejs-wrapper {
+            display: none;
+        }
+
+        .race-countdown {
+            position: absolute;
+            inset: 0;
+            z-index: 35;
+            display: grid;
+            place-items: center;
+            color: #ffffff;
+            font-family: var(--font-display);
+            font-size: clamp(7rem, 24vw, 18rem);
+            font-weight: 900;
+            font-style: italic;
+            line-height: 1;
+            text-shadow: 0 0 24px rgba(225, 6, 0, 0.9), 0 0 70px rgba(225, 6, 0, 0.55);
+            background: rgba(3, 5, 9, 0.18);
+            pointer-events: none;
+            animation: countdownPop 0.35s ease-out;
+        }
+        .race-countdown[hidden] {
+            display: none;
+        }
+        .race-result {
+            position: absolute;
+            inset: 0;
+            z-index: 50;
+            display: grid;
+            place-items: center;
+            padding: 1.5rem;
+            background: rgba(3, 5, 9, 0.78);
+            backdrop-filter: blur(7px);
+        }
+        .race-result[hidden] {
+            display: none;
+        }
+        .race-result-card {
+            width: min(100%, 32rem);
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 5px solid var(--color-brand-red);
+            background: linear-gradient(135deg, rgba(20, 25, 35, 0.98), rgba(8, 10, 15, 0.98));
+            box-shadow: 0 20px 70px rgba(0, 0, 0, 0.75), 0 0 35px rgba(225, 6, 0, 0.25);
+            text-align: center;
+        }
+        .race-result-title {
+            color: #ffffff;
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 8vw, 4rem);
+            font-style: italic;
+            font-weight: 900;
+            text-shadow: 0 0 22px rgba(225, 6, 0, 0.65);
+        }
+        .race-result-message {
+            margin: 0.75rem 0 1.75rem;
+            color: #cbd5e1;
+            font-family: var(--font-tech);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .race-countdown.go {
+            color: #34d399;
+            font-size: clamp(4rem, 15vw, 11rem);
+            text-shadow: 0 0 24px rgba(52, 211, 153, 0.9), 0 0 70px rgba(52, 211, 153, 0.55);
+        }
+        @keyframes countdownPop {
+            from { opacity: 0; transform: scale(1.35); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* HUD TELEMETRY OVERLAY */
+        .hud-panel {
+            background: rgba(8, 11, 18, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border-left: 4px solid var(--color-brand-red);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            transform: skewX(-4deg);
+        }
+
+        .hud-bar-container {
+            width: 100%;
+            height: 16px;
+            background: rgba(15, 22, 34, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hud-bar-fill-speed {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #10b981 0%, #eab308 70%, #ef4444 100%);
+            box-shadow: 0 0 12px #10b981;
+            transition: width 0.05s linear;
+        }
+
+        .hud-bar-fill-brake {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #f87171 0%, #dc2626 100%);
+            box-shadow: 0 0 12px #ef4444;
+            transition: width 0.05s linear;
+        }
+
+        .pedal-btn {
+            user-select: none;
+            touch-action: manipulation;
+        }
+
+        .track-speed-legend {
+            position: absolute;
+            left: 1.5rem;
+            bottom: 1.5rem;
+            z-index: 40;
+            display: flex;
+            gap: 0.8rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 0.4rem;
+            background: rgba(7, 9, 14, 0.88);
+            color: #ffffff;
+            font-family: var(--font-tech);
+            font-size: 0.8rem;
+            font-weight: 700;
+            pointer-events: none;
+        }
+        .track-speed-legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            white-space: nowrap;
+        }
+        .speed-legend-dot {
+            width: 0.6rem;
+            height: 0.6rem;
+            border-radius: 50%;
+        }
+        .speed-legend-dot.safe { background: #22c55e; }
+        .speed-legend-dot.caution { background: #facc15; }
+        .speed-legend-dot.danger { background: #ef4444; }
+
+        .race-top-controls {
+            position: absolute;
+            right: 1.5rem;
+            bottom: 1.5rem;
+            z-index: 40;
+            align-items: center;
+            padding: 0.35rem;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 0.45rem;
+            background: rgba(7, 9, 14, 0.88);
+            backdrop-filter: blur(6px);
+        }
+
+        @media (max-width: 767px) {
+            .track-speed-legend {
+                right: auto;
+                bottom: 6.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+                gap: 0.55rem;
+                padding: 0.4rem 0.55rem;
+                font-size: 0.7rem;
+            }
+
+            .race-top-controls {
+                top: 5.5rem;
+                right: 1rem;
+                bottom: auto;
+            }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--color-brand-red); border-radius: 3px; }
+
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background: #0a0e17;
+            border: 2px solid var(--color-brand-red);
+            box-shadow: 0 0 25px rgba(225,6,0,0.6);
+            color: white;
+            padding: 12px 24px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            font-family: var(--font-tech);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            pointer-events: none;
+        }
+        .toast-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    
+
+
+/* Gestión de neumáticos y parada en boxes — carrera rápida */
+.tyre-hud {
+    position: absolute;
+    top: 7.7rem;
+    left: 1rem;
+    z-index: 41;
+    width: 18rem;
+    padding: .8rem 1rem;
+    border-left: 3px solid #facc15;
+    background: rgba(7, 9, 14, .92);
+    backdrop-filter: blur(10px);
+}
+.tyre-compound { font: 900 .72rem 'Rajdhani',sans-serif; letter-spacing: .08em; }
+.tyre-compound.soft { color: #fb7185; }
+.tyre-compound.medium { color: #facc15; }
+.tyre-compound.hard { color: #e5e7eb; }
+.tyre-wear-track { height: 7px; margin-top: .55rem; background: #273244; border-radius: 9px; overflow: hidden; }
+.tyre-wear-fill { height: 100%; width: 0; background: linear-gradient(90deg,#22c55e 0%,#facc15 65%,#ef4444 100%); transition: width .25s ease; }
+.pit-open-button { width: 100%; margin-top: .65rem; padding: .45rem .7rem; color: white; background: #b91c1c; border: 1px solid #ef4444; font: 900 .78rem 'Rajdhani',sans-serif; letter-spacing: .08em; cursor: pointer; }
+.pit-open-button:hover { background: #ef4444; }
+.pit-modal { position: absolute; inset: 0; z-index: 80; display: flex; align-items: center; justify-content: center; padding: 1rem; background: rgba(0,0,0,.78); backdrop-filter: blur(8px); }
+.pit-modal[hidden] { display: none; }
+.pit-card { width: min(680px,100%); padding: 2rem; background: linear-gradient(145deg,#141c2b,#07090e); border: 1px solid rgba(255,255,255,.2); border-top: 4px solid #e10600; box-shadow: 0 25px 90px #000; color: white; }
+.pit-kicker { color: #ef4444; font: 900 .75rem 'Rajdhani',sans-serif; letter-spacing: .2em; }
+.pit-card h2 { margin: .4rem 0; font: italic 900 clamp(1.5rem,4vw,2.4rem) 'Montserrat',sans-serif; }
+.pit-description { color: #9ca3af; font: .9rem 'Rajdhani',sans-serif; margin-bottom: 1.2rem; }
+.pit-options { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .7rem; }
+.pit-option { display: flex; flex-direction: column; align-items: flex-start; gap: .35rem; padding: 1rem; text-align: left; background: #0b111c; border: 1px solid #344155; color: white; cursor: pointer; transition: .2s; }
+.pit-option:hover { transform: translateY(-3px); border-color: white; background: #172235; }
+.pit-option strong { font: 900 1rem 'Rajdhani',sans-serif; }
+.pit-option b { font: 900 .85rem 'Rajdhani',sans-serif; color: #facc15; }
+.pit-option small { color: #9ca3af; font: .75rem 'Rajdhani',sans-serif; }
+.pit-dot { width: 1rem; height: 1rem; border-radius: 50%; border: 3px solid rgba(255,255,255,.8); }
+.pit-option.soft .pit-dot { background: #e11d48; }
+.pit-option.medium .pit-dot { background: #facc15; }
+.pit-option.hard .pit-dot { background: #e5e7eb; }
+.pit-cancel { margin-top: 1rem; padding: .6rem 1rem; color: #cbd5e1; background: transparent; border: 1px solid #475569; font: 800 .8rem 'Rajdhani',sans-serif; cursor: pointer; }
+@media (max-width: 767px) {
+  .tyre-hud { top: auto; bottom: 8.5rem; left: 50%; transform: translateX(-50%); width: min(18rem,calc(100vw - 2rem)); }
+  .pit-card { padding: 1.2rem; }
+  .pit-options { grid-template-columns: 1fr; }
+  .pit-option { display: grid; grid-template-columns: 1rem 1fr auto; align-items: center; }
+  .pit-option small { grid-column: 2 / 4; }
+}
+
+/* Selección interactiva del compuesto antes de la carrera rápida */
+.quick-tyre-setup { width: min(100%, 1100px); margin: 1.5rem auto 0; padding: 1.5rem; background: rgba(5,9,16,.94); border: 1px solid #475569; border-top: 3px solid #e10600; box-shadow: 0 18px 55px rgba(0,0,0,.5); }
+.quick-tyre-setup[hidden] { display: none; }
+.quick-tyre-heading h3 { margin: .35rem 0; color: white; font: 900 clamp(1.2rem,3vw,2rem) 'Montserrat',sans-serif; }
+.quick-tyre-heading p { color: #9ca3af; font: .9rem 'Rajdhani',sans-serif; margin-bottom: 1rem; }
+.quick-tyre-options .pit-option { min-height: 145px; }
+.pit-option.selected { border: 2px solid #ef4444; box-shadow: 0 0 0 2px rgba(239,68,68,.2), 0 0 22px rgba(225,6,0,.3); background: linear-gradient(145deg,rgba(127,29,29,.35),#0b111c); transform: translateY(-2px); }
+.pit-option.selected::after { content: '✓ SELECCIONADO'; color: #fca5a5; font: 900 .7rem 'Rajdhani',sans-serif; letter-spacing: .08em; }
+.quick-tyre-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1rem; }
+.quick-tyre-actions span { color: #facc15; font: 900 .85rem 'Rajdhani',sans-serif; letter-spacing: .08em; }
+.pit-start-button { padding: .8rem 1.2rem; background: #b91c1c; border: 1px solid #ef4444; color: white; font: 900 .9rem 'Rajdhani',sans-serif; cursor: pointer; transition: .2s; }
+.pit-start-button:hover { background: #e10600; transform: translateY(-2px); }
